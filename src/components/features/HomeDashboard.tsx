@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { BrainMascot } from '../mascot/BrainMascot';
 import { SecretLetter } from './SecretLetter';
+import { ComplimentMachine } from './ComplimentMachine';
 import { useApp } from '../../context/AppContext';
 
 export const HomeDashboard: React.FC = () => {
@@ -59,7 +60,12 @@ export const HomeDashboard: React.FC = () => {
         <SecretLetter embedded={true} />
       </section>
 
-      {/* Main Section - Exactly 3 Prominent Feature Cards */}
+      {/* Random Compliment Machine (Embedded right below secret letter) */}
+      <section>
+        <ComplimentMachine embedded={true} />
+      </section>
+
+      {/* Main Section - Prominent Feature Cards */}
       <section className="space-y-3.5">
         
         {/* Card 1: Overthinking Simulator */}
