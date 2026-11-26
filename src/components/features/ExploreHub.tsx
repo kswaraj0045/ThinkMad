@@ -126,10 +126,10 @@ export const ExploreHub: React.FC = () => {
           </div>
           <div className="mt-4">
             <h3 className="text-sm font-extrabold text-slate-800 font-display">
-              Open When You Need a Smile 🎁
+              Catch Me If You Want to Smile 🎁
             </h3>
             <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">
-              Virtual surprise gift box containing 20+ sweet and funny pick-me-ups.
+              Floating surprise care package containing 20+ sweet and funny pick-me-ups.
             </p>
           </div>
         </motion.div>

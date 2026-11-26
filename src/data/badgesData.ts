@@ -19,8 +19,8 @@ export const INITIAL_BADGES: Badge[] = [
   },
   {
     id: 'badge-gift-opened',
-    title: 'Smile Receiver',
-    description: 'Unwrapped a surprise care package from the virtual gift box.',
+    title: 'Smile Catcher',
+    description: 'Caught the floating surprise box on the homescreen! 🎁',
     icon: '🎁',
     unlockedAt: null,
     category: 'explorer'

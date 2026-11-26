@@ -51,10 +51,10 @@ export const SmileGiftBox: React.FC = () => {
           <span>Surprise Delivery 🎁</span>
         </div>
         <h1 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight font-display">
-          Open When You Need a Smile
+          Catch Me If You Want to Smile
         </h1>
         <p className="text-xs md:text-sm text-slate-500 font-medium max-w-sm mx-auto">
-          A little digital care package whenever your brain gets too loud.
+          A little digital care package floating into your day whenever your brain gets too loud.
         </p>
       </div>
 
@@ -111,7 +111,7 @@ export const SmileGiftBox: React.FC = () => {
                 onClick={handleOpenBox}
                 className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-pastel-pink-deep to-[#FF5376] text-white font-extrabold text-xs md:text-sm shadow-soft hover:shadow-glow-pink transition-all"
               >
-                Open Gift Box 🎁
+                Catch Me If You Want to Smile 🎁
               </motion.button>
             </motion.div>
           ) : (
@@ -144,7 +144,7 @@ export const SmileGiftBox: React.FC = () => {
                   className="px-5 py-2.5 rounded-2xl bg-pastel-lavender hover:bg-pastel-purple/40 text-pastel-purple-accent font-extrabold text-xs md:text-sm transition-all active:scale-95 flex items-center gap-1.5"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
-                  <span>Open Another Surprise 🎁</span>
+                  <span>Catch Another Surprise 🎁</span>
                 </button>
               </div>
             </motion.div>

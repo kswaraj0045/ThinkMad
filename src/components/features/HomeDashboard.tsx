@@ -12,6 +12,7 @@ import {
 import { BrainMascot } from '../mascot/BrainMascot';
 import { SecretLetter } from './SecretLetter';
 import { ComplimentMachine } from './ComplimentMachine';
+import { FloatingSmileBox } from './FloatingSmileBox';
 import { useApp } from '../../context/AppContext';
 
 export const HomeDashboard: React.FC = () => {
@@ -215,7 +216,7 @@ export const HomeDashboard: React.FC = () => {
             </div>
           </button>
 
-          {/* Sub-card 2: Open When You Need a Smile */}
+          {/* Sub-card 2: Catch Me If You Want to Smile */}
           <button
             onClick={() => setCurrentTab('gift')}
             className="p-3.5 rounded-2xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-slate-300 shadow-sm text-left transition-all active:scale-95 flex flex-col justify-between group"
@@ -225,10 +226,10 @@ export const HomeDashboard: React.FC = () => {
             </div>
             <div>
               <h3 className="text-xs font-bold text-slate-800 line-clamp-1">
-                Need a Smile?
+                Catch Me & Smile
               </h3>
               <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5">
-                Open surprise gift box
+                Floating care surprise 🎁
               </p>
             </div>
           </button>
@@ -271,6 +272,9 @@ export const HomeDashboard: React.FC = () => {
 
         </div>
       </section>
+
+      {/* Floating Smile Box on Homescreen */}
+      <FloatingSmileBox />
 
     </div>
   );
