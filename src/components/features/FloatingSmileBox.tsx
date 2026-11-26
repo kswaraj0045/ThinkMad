@@ -33,45 +33,42 @@ export const FloatingSmileBox: React.FC = () => {
 
   return (
     <>
-      {/* Floating Interactive Element on Homescreen */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-30 select-none"
-      >
-        <motion.button
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.92 }}
+      {/* Floating Interactive Element on Homescreen - Glides from Upper Right to Left and back */}
+      <div className="fixed top-14 md:top-16 left-3 right-3 max-w-3xl mx-auto pointer-events-none z-30 h-10 select-none">
+        <motion.div
           animate={{
-            y: [0, -9, 0],
-            rotate: [0, 3, -3, 0]
+            left: ['calc(100% - 190px)', '0%', 'calc(100% - 190px)'],
+            y: [0, 6, -3, 0],
+            rotate: [0, 3, -3, 0],
           }}
           transition={{
-            duration: 3.2,
-            repeat: Infinity,
-            ease: 'easeInOut'
+            left: { duration: 10, repeat: Infinity, ease: 'easeInOut' },
+            y: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+            rotate: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
           }}
-          onClick={handleCatchBox}
-          className="flex items-center gap-2 pl-3 pr-4 py-2.5 rounded-full bg-gradient-to-r from-pastel-pink-deep via-[#FF758F] to-[#FF85A1] text-white shadow-soft-lg border-2 border-white/80 group cursor-pointer"
-          title="Catch me if you want to smile 🎁"
+          className="absolute pointer-events-auto"
         >
-          {/* Bouncing Gift Icon */}
-          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-lg shadow-inner group-hover:rotate-12 transition-transform">
-            🎁
-          </div>
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={handleCatchBox}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-pastel-pink-deep via-[#FF758F] to-[#FF85A1] text-white shadow-soft border border-white/90 group cursor-pointer"
+            title="Catch me if you want to smile 🎁"
+          >
+            {/* Small Bouncing Gift Emoji */}
+            <span className="text-sm group-hover:rotate-12 transition-transform">
+              🎁
+            </span>
 
-          <div className="text-left">
-            <span className="block text-xs font-black tracking-tight leading-tight font-display drop-shadow-sm">
+            {/* Compact single-line label */}
+            <span className="text-[11px] font-black tracking-tight font-display drop-shadow-sm whitespace-nowrap">
               Catch me if you want to smile
             </span>
-            <span className="block text-[10px] text-pink-100 font-semibold leading-none">
-              Tap to unwrap surprise ✨
-            </span>
-          </div>
 
-          <Sparkles className="w-3.5 h-3.5 text-amber-200 animate-pulse shrink-0" />
-        </motion.button>
-      </motion.div>
+            <Sparkles className="w-3 h-3 text-amber-200 animate-pulse shrink-0" />
+          </motion.button>
+        </motion.div>
+      </div>
 
       {/* Surprise Modal Dialog when caught */}
       <AnimatePresence>

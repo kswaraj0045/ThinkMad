@@ -19,7 +19,7 @@ export const HomeDashboard: React.FC = () => {
   const { setCurrentTab, openEmergency } = useApp();
 
   return (
-    <div className="space-y-6 pb-6 max-w-2xl mx-auto">
+    <div className="pt-6 md:pt-7 space-y-6 pb-6 max-w-2xl mx-auto">
       
       {/* Top Welcome Section */}
       <motion.section
