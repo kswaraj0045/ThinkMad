@@ -10,6 +10,7 @@ import {
   Mail
 } from 'lucide-react';
 import { BrainMascot } from '../mascot/BrainMascot';
+import { SecretLetter } from './SecretLetter';
 import { useApp } from '../../context/AppContext';
 
 export const HomeDashboard: React.FC = () => {
@@ -52,6 +53,11 @@ export const HomeDashboard: React.FC = () => {
           </div>
         </div>
       </motion.section>
+
+      {/* Secret Letter From Swaraj (Embedded right below welcome section) */}
+      <section className="bg-white/80 rounded-3xl p-5 md:p-6 border border-pastel-pink/50 shadow-soft">
+        <SecretLetter embedded={true} />
+      </section>
 
       {/* Main Section - Exactly 3 Prominent Feature Cards */}
       <section className="space-y-3.5">

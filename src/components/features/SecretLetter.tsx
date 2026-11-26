@@ -5,7 +5,11 @@ import { useApp } from '../../context/AppContext';
 import { sounds } from '../../utils/sound';
 import { triggerHeartConfetti } from '../../utils/confetti';
 
-export const SecretLetter: React.FC = () => {
+interface SecretLetterProps {
+  embedded?: boolean;
+}
+
+export const SecretLetter: React.FC<SecretLetterProps> = ({ embedded = false }) => {
   const { unlockBadge, addToast } = useApp();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,24 +31,34 @@ export const SecretLetter: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-2xl mx-auto">
+    <div className={`max-w-2xl mx-auto ${embedded ? 'space-y-3' : 'space-y-6'}`}>
       
-      {/* Required Heading & Subtitle */}
-      <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 border border-pink-300 text-pink-700 text-xs font-black tracking-wide uppercase">
-          <Heart className="w-3.5 h-3.5 fill-pink-500" />
-          <span>Feature 07 • Personal Digital Gift</span>
+      {/* Heading */}
+      {!embedded ? (
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 border border-pink-300 text-pink-700 text-xs font-black tracking-wide uppercase">
+            <Heart className="w-3.5 h-3.5 fill-pink-500" />
+            <span>Feature 07 • Personal Digital Gift</span>
+          </div>
+          <h1 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight font-display">
+            A LITTLE SOMETHING FOR YOU 💗
+          </h1>
+          <p className="text-sm text-slate-600 font-medium max-w-md mx-auto">
+            Someone left you a message...
+          </p>
         </div>
-        <h1 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight font-display">
-          A LITTLE SOMETHING FOR YOU 💗
-        </h1>
-        <p className="text-sm text-slate-600 font-medium max-w-md mx-auto">
-          Someone left you a message...
-        </p>
-      </div>
+      ) : (
+        <div className="flex items-center justify-between px-1">
+          <div className="flex items-center gap-1.5 text-xs font-black uppercase text-pink-600 tracking-wider">
+            <Heart className="w-3.5 h-3.5 fill-pink-500" />
+            <span>A Little Note For You 💌</span>
+          </div>
+          <span className="text-[11px] font-bold text-slate-400">From Swaraj ❤️</span>
+        </div>
+      )}
 
       {/* Envelope Container */}
-      <div className="flex flex-col items-center justify-center py-4 select-none">
+      <div className={`flex flex-col items-center justify-center select-none ${embedded ? 'py-1' : 'py-4'}`}>
         
         <AnimatePresence mode="wait">
           {!isOpen ? (
