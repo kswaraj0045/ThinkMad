@@ -1,0 +1,18 @@
+{
+  "name": "RUTUJA.EXE",
+  "short_name": "RUTUJA.EXE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7FC",
+  "theme_color": "#E9E4F5",
+  "orientation": "portrait",
+  "description": "The Overthinking Control Centre for Rutuja. Too many thoughts. Too little storage. Made with love by Swaraj.",
+  "icons": [
+    {
+      "src": "/icons/brain-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
