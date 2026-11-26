@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
@@ -8,6 +8,7 @@ import { Footer } from './components/common/Footer';
 import { ToastContainer } from './components/common/ToastContainer';
 import { EmergencyModal } from './components/features/EmergencyModal';
 import { QuitConfirmModal } from './components/common/QuitConfirmModal';
+import { ShutdownScreen } from './components/common/ShutdownScreen';
 import { sounds } from './utils/sound';
 
 // Feature Views
@@ -24,6 +25,8 @@ import { ComplimentMachine } from './components/features/ComplimentMachine';
 export const AppContent: React.FC = () => {
   const { currentTab, setCurrentTab, isEmergencyOpen, closeEmergency } = useApp();
   const [isQuitModalOpen, setIsQuitModalOpen] = useState(false);
+  const [isExited, setIsExited] = useState(false);
+  const isAllowingExitRef = useRef(false);
 
   // Intercept smartphone & browser Back button
   useEffect(() => {
@@ -32,6 +35,11 @@ export const AppContent: React.FC = () => {
     window.history.pushState({ app: 'rutuja', step: 2 }, '');
 
     const handlePopState = () => {
+      // If user confirmed exit, allow browser to navigate back freely
+      if (isAllowingExitRef.current) {
+        return;
+      }
+
       // Re-push history immediately to prevent accidental app quit
       window.history.pushState({ app: 'rutuja', step: 2 }, '');
 
@@ -63,9 +71,34 @@ export const AppContent: React.FC = () => {
   };
 
   const handleExit = () => {
+    isAllowingExitRef.current = true;
     setIsQuitModalOpen(false);
-    window.history.go(-2);
+
+    // 1. Try closing window natively (works in PWA, homescreen standalone, and webviews)
+    try {
+      window.close();
+    } catch {
+      // ignore
+    }
+
+    // 2. If there is prior browser history before our app, navigate back
+    if (window.history.length > 2) {
+      window.history.go(-2);
+    }
+
+    // 3. Fallback: Display peaceful Shutdown Screen so user unambiguously exits session
+    setIsExited(true);
   };
+
+  const handleRestart = () => {
+    isAllowingExitRef.current = false;
+    setIsExited(false);
+    window.history.pushState({ app: 'rutuja', step: 2 }, '');
+  };
+
+  if (isExited) {
+    return <ShutdownScreen onRestart={handleRestart} />;
+  }
 
   const renderActiveTab = () => {
     switch (currentTab) {

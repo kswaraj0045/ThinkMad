@@ -99,9 +99,9 @@ export const QuitConfirmModal: React.FC<QuitConfirmModalProps> = ({
 
               <button
                 onClick={onExit}
-                className="w-full py-2 text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors"
+                className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-500 hover:text-slate-700 transition-all active:scale-95"
               >
-                I really have to go 🥺
+                I really want to go 🥺
               </button>
             </div>
 
