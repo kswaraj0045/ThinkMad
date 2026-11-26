@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
@@ -7,6 +7,8 @@ import { DesktopNav } from './components/common/DesktopNav';
 import { Footer } from './components/common/Footer';
 import { ToastContainer } from './components/common/ToastContainer';
 import { EmergencyModal } from './components/features/EmergencyModal';
+import { QuitConfirmModal } from './components/common/QuitConfirmModal';
+import { sounds } from './utils/sound';
 
 // Feature Views
 import { HomeDashboard } from './components/features/HomeDashboard';
@@ -20,7 +22,50 @@ import { SmileGiftBox } from './components/features/SmileGiftBox';
 import { ComplimentMachine } from './components/features/ComplimentMachine';
 
 export const AppContent: React.FC = () => {
-  const { currentTab } = useApp();
+  const { currentTab, setCurrentTab, isEmergencyOpen, closeEmergency } = useApp();
+  const [isQuitModalOpen, setIsQuitModalOpen] = useState(false);
+
+  // Intercept smartphone & browser Back button
+  useEffect(() => {
+    // Prime history stack
+    window.history.replaceState({ app: 'rutuja', step: 1 }, '');
+    window.history.pushState({ app: 'rutuja', step: 2 }, '');
+
+    const handlePopState = () => {
+      // Re-push history immediately to prevent accidental app quit
+      window.history.pushState({ app: 'rutuja', step: 2 }, '');
+
+      // Priority 1: If emergency modal is open, close it
+      if (isEmergencyOpen) {
+        closeEmergency();
+        return;
+      }
+
+      // Priority 2: If on a sub-screen, return to Home
+      if (currentTab !== 'home') {
+        setCurrentTab('home');
+        return;
+      }
+
+      // Priority 3: On Home screen, trigger the dramatic Quit Confirm Modal
+      sounds.playEmergencyBeep();
+      setIsQuitModalOpen(true);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [currentTab, isEmergencyOpen, closeEmergency, setCurrentTab]);
+
+  const handleStay = () => {
+    setIsQuitModalOpen(false);
+  };
+
+  const handleExit = () => {
+    setIsQuitModalOpen(false);
+    window.history.go(-2);
+  };
 
   const renderActiveTab = () => {
     switch (currentTab) {
@@ -88,6 +133,13 @@ export const AppContent: React.FC = () => {
 
       {/* Emergency Modal Overlay */}
       <EmergencyModal />
+
+      {/* Quit Confirmation Drama Modal */}
+      <QuitConfirmModal
+        isOpen={isQuitModalOpen}
+        onStay={handleStay}
+        onExit={handleExit}
+      />
 
     </div>
   );
