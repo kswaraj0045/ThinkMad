@@ -10,18 +10,26 @@ export const INITIAL_BADGES: Badge[] = [
     category: 'starter'
   },
   {
-    id: 'badge-fbi-investigator',
-    title: 'FBI Detective',
-    description: 'Submitted an overthought situation to the Feelings Bureau.',
-    icon: '🕵️‍♀️',
+    id: 'badge-mood-tracker',
+    title: 'Mood Master',
+    description: 'Selected your mood of the day. Acknowledging feelings like a boss!',
+    icon: '🌸',
     unlockedAt: null,
     category: 'explorer'
   },
   {
-    id: 'badge-oracle-believer',
-    title: 'Oracle Believer',
-    description: 'Consulted the mystical Rutuja crystal ball for life answers.',
-    icon: '🔮',
+    id: 'badge-gift-opened',
+    title: 'Smile Receiver',
+    description: 'Unwrapped a surprise care package from the virtual gift box.',
+    icon: '🎁',
+    unlockedAt: null,
+    category: 'explorer'
+  },
+  {
+    id: 'badge-compliment-loved',
+    title: 'Compliment Collector',
+    description: 'Took a well-deserved compliment from the machine.',
+    icon: '💗',
     unlockedAt: null,
     category: 'explorer'
   },
@@ -37,7 +45,7 @@ export const INITIAL_BADGES: Badge[] = [
     id: 'badge-peace-mode',
     title: 'Peace Mode Explorer',
     description: 'Attempted to install Peace of Mind into Brain.exe.',
-    icon: '🕊️',
+    icon: '💻',
     unlockedAt: null,
     category: 'explorer'
   },

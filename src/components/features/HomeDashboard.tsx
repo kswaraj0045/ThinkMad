@@ -1,355 +1,261 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Sparkles, 
-  RefreshCw, 
-  Smile, 
-  Layers, 
+  AlertCircle, 
   ArrowRight,
-  ShieldCheck,
-  Heart
+  Cpu, 
+  Gift, 
+  Heart, 
+  Mail
 } from 'lucide-react';
 import { BrainMascot } from '../mascot/BrainMascot';
 import { useApp } from '../../context/AppContext';
-import { getRandomQuote } from '../../data/quotesData';
-import { sounds } from '../../utils/sound';
 
 export const HomeDashboard: React.FC = () => {
-  const { setCurrentTab, openEmergency, dramaLevel } = useApp();
-  const [quote, setQuote] = useState(() => getRandomQuote());
-  const [isQuoteRefreshing, setIsQuoteRefreshing] = useState(false);
-
-  const handleRefreshQuote = () => {
-    sounds.playPop();
-    setIsQuoteRefreshing(true);
-    setQuote(getRandomQuote());
-    setTimeout(() => setIsQuoteRefreshing(false), 300);
-  };
+  const { setCurrentTab, openEmergency } = useApp();
 
   return (
-    <div className="space-y-6 pb-6">
+    <div className="space-y-6 pb-6 max-w-2xl mx-auto">
       
-      {/* Welcome Hero Banner with Animated Mascot */}
+      {/* Top Welcome Section */}
       <motion.section
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="glass-card rounded-3xl p-5 md:p-7 relative overflow-hidden border border-white/70 shadow-soft"
+        transition={{ duration: 0.4 }}
+        className="bg-white/80 rounded-3xl p-5 md:p-6 border border-pastel-lavender/60 shadow-soft text-center sm:text-left relative overflow-hidden"
       >
-        {/* Soft pastel decorative gradient circles */}
-        <div className="absolute -top-10 -right-10 w-44 h-44 bg-pastel-pink/50 rounded-full blur-2xl pointer-events-none" />
-        <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-pastel-purple/40 rounded-full blur-2xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
-          
-          {/* Animated Brain Mascot */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+          {/* Brain Mascot (compact, clean) */}
           <div className="shrink-0">
-            <BrainMascot mood={dramaLevel > 70 ? 'overthinking' : 'happy'} size="md" />
+            <BrainMascot size="sm" showSpeechBubble={false} />
           </div>
 
           {/* Welcome Text */}
-          <div className="flex-1 text-center md:text-left space-y-2">
-            
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pastel-pink/80 border border-pastel-pink-deep/30 text-pastel-pink-deep text-xs font-black tracking-wide uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Rutuja's Mental Wellness HQ</span>
+          <div className="space-y-1.5 flex-1">
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <span className="font-extrabold text-xs tracking-wider text-pastel-purple-accent uppercase font-display">
+                RUTUJA.EXE
+              </span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pastel-pink text-pastel-pink-deep border border-pastel-pink-deep/20">
+                Control Centre
+              </span>
             </div>
 
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-800 tracking-tight font-display">
+            <h1 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight font-display">
               Welcome back, Rutuja! 💗
             </h1>
 
-            <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed max-w-lg">
-              Your brain has <span className="font-extrabold text-pastel-purple-accent underline decoration-pastel-pink-deep decoration-2">47 tabs open</span>. Let's close a few.
+            <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
+              Your brain has <span className="font-bold text-slate-700">47 tabs open</span>. Let's close a few.
             </p>
-
-            {/* Required prominent Fix My Brain button */}
-            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={openEmergency}
-                className="px-6 py-3 rounded-2xl bg-gradient-to-r from-pastel-pink-deep to-[#FF5376] text-white font-extrabold text-sm md:text-base shadow-glow-pink flex items-center gap-2 group transition-shadow"
-              >
-                <span>FIX MY BRAIN 😂</span>
-                <span className="text-lg group-hover:rotate-12 transition-transform">🚨</span>
-              </motion.button>
-
-              <button
-                onClick={() => setCurrentTab('letter')}
-                className="px-4 py-2.5 rounded-2xl bg-white/90 hover:bg-pastel-pink/40 border border-pastel-purple/30 text-slate-700 text-xs md:text-sm font-bold flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
-              >
-                <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
-                <span>Swaraj's Note</span>
-              </button>
-            </div>
-
           </div>
         </div>
       </motion.section>
 
-      {/* Brain Status & Meters Grid */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {/* Main Section - Exactly 3 Prominent Feature Cards */}
+      <section className="space-y-3.5">
         
-        {/* Status Card 1 */}
+        {/* Card 1: Overthinking Simulator */}
         <motion.div
           whileHover={{ y: -2 }}
-          className="glass-card-lavender rounded-2xl p-3.5 border border-pastel-purple/40 shadow-sm flex flex-col justify-between"
+          className="bg-white rounded-3xl p-5 border border-pastel-lavender/80 shadow-soft transition-all"
         >
-          <div className="flex items-center justify-between text-pastel-purple-accent">
-            <span className="text-[11px] font-black uppercase tracking-wider">Brain Status</span>
-            <Layers className="w-4 h-4" />
-          </div>
-          <div className="mt-2">
-            <p className="text-xs md:text-sm font-black text-slate-800 leading-tight">
-              TOO MANY TABS OPEN
-            </p>
-            <p className="text-[10px] text-slate-500 font-semibold mt-0.5">
-              47 background processes
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Status Card 2 */}
-        <motion.div
-          whileHover={{ y: -2 }}
-          className="glass-card-pink rounded-2xl p-3.5 border border-pastel-pink-deep/30 shadow-sm flex flex-col justify-between"
-        >
-          <div className="flex items-center justify-between text-pastel-pink-deep">
-            <span className="text-[11px] font-black uppercase tracking-wider">Current Mood</span>
-            <Smile className="w-4 h-4" />
-          </div>
-          <div className="mt-2">
-            <p className="text-xs md:text-sm font-black text-slate-800 leading-tight">
-              DRAMATIC BUT CUTE
-            </p>
-            <p className="text-[10px] text-slate-500 font-semibold mt-0.5">
-              Bollywood level: 85%
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Status Card 3 */}
-        <motion.div
-          whileHover={{ y: -2 }}
-          className="glass-card-lavender rounded-2xl p-3.5 border border-pastel-purple/40 shadow-sm flex flex-col justify-between"
-        >
-          <div className="flex items-center justify-between text-indigo-500">
-            <span className="text-[11px] font-black uppercase tracking-wider">Peace Level</span>
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <div className="mt-2">
-            <p className="text-xs md:text-sm font-black text-slate-800 leading-tight">
-              LOADING...
-            </p>
-            <div className="w-full bg-slate-200/70 h-1.5 rounded-full mt-1.5 overflow-hidden">
-              <motion.div
-                animate={{ width: ['20%', '65%', '40%', '80%'] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="h-full bg-indigo-500 rounded-full"
-              />
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0 border border-amber-100">
+                🧠
+              </div>
+              <div>
+                <h2 className="text-base font-extrabold text-slate-800 font-display">
+                  Overthinking Simulator
+                </h2>
+                <p className="text-xs text-slate-500 font-medium mt-0.5 line-clamp-1">
+                  Turn a 2-second event into an unnecessary 3-season drama.
+                </p>
+              </div>
             </div>
           </div>
+
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-[11px] font-bold text-amber-600/80">
+              Bollywood level: Unlimited 🎬
+            </span>
+            <button
+              onClick={() => setCurrentTab('simulator')}
+              className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
+            >
+              <span>Simulate Now</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </motion.div>
 
-        {/* Status Card 4 */}
+        {/* Card 2: Mood of the Day */}
         <motion.div
           whileHover={{ y: -2 }}
-          className="glass-card rounded-2xl p-3.5 border border-slate-200 shadow-sm flex flex-col justify-between"
+          className="bg-white rounded-3xl p-5 border border-pastel-pink/50 shadow-soft transition-all"
         >
-          <div className="flex items-center justify-between text-emerald-600">
-            <span className="text-[11px] font-black uppercase tracking-wider">System Status</span>
-            <ShieldCheck className="w-4 h-4" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl shrink-0 border border-pink-100">
+                🌸
+              </div>
+              <div>
+                <h2 className="text-base font-extrabold text-slate-800 font-display">
+                  Mood of the Day
+                </h2>
+                <p className="text-xs text-slate-500 font-medium mt-0.5 line-clamp-1">
+                  How are you feeling right now? Pick an emoji for custom comfort.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="mt-2">
-            <p className="text-xs md:text-sm font-black text-slate-800 leading-tight flex items-center gap-1">
-              <span>SURVIVING</span>
-              <span>✨</span>
-            </p>
-            <p className="text-[10px] text-emerald-600 font-bold mt-0.5">
-              Swaraj firewall active
-            </p>
+
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-sm select-none">
+              <span>😊</span>
+              <span>😴</span>
+              <span>🥺</span>
+              <span>🤩</span>
+              <span>😵‍💫</span>
+              <span>🎭</span>
+            </div>
+            <button
+              onClick={() => setCurrentTab('mood')}
+              className="px-4 py-2 rounded-xl bg-pastel-pink-deep hover:bg-rose-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
+            >
+              <span>Log Mood</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Card 3: Emergency Overthinking Button */}
+        <motion.div
+          whileHover={{ y: -2 }}
+          className="bg-gradient-to-r from-red-50/90 to-rose-50/90 rounded-3xl p-5 border border-red-200/70 shadow-soft transition-all"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl shrink-0 border border-red-200">
+                🚨
+              </div>
+              <div>
+                <h2 className="text-base font-extrabold text-red-900 font-display">
+                  Emergency Overthinking Button
+                </h2>
+                <p className="text-xs text-red-700/80 font-medium mt-0.5 line-clamp-1">
+                  Immediate 5-second countdown & calming panic neutralizer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-red-200/50 flex items-center justify-between">
+            <span className="text-[11px] font-bold text-red-600 flex items-center gap-1">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>Instant relief mode</span>
+            </span>
+            <button
+              onClick={openEmergency}
+              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
+            >
+              <span>I Am Overthinking 🚨</span>
+            </button>
           </div>
         </motion.div>
 
       </section>
 
-      {/* Random Funny Motivational Quote Card */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.15 }}
-        className="bg-white/90 rounded-3xl p-4 md:p-5 border border-pastel-lavender/70 shadow-soft relative overflow-hidden"
-      >
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-2 text-pastel-purple-accent">
-            <span className="text-lg">💡</span>
-            <h3 className="text-xs font-black uppercase tracking-wider">
-              Random Anti-Overthinking Thought
-            </h3>
-          </div>
+      {/* EXPLORE MORE ✨ Section (Smaller cards for remaining features) */}
+      <section className="space-y-3 pt-2">
+        <div className="flex items-center justify-between px-1">
+          <h2 className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-pastel-purple-accent" />
+            <span>EXPLORE MORE ✨</span>
+          </h2>
           <button
-            onClick={handleRefreshQuote}
-            className={`p-1.5 rounded-full hover:bg-pastel-lavender/50 text-slate-400 hover:text-pastel-purple-accent transition-all ${
-              isQuoteRefreshing ? 'rotate-180' : ''
-            }`}
-            title="Give me another quote"
-            aria-label="New quote"
+            onClick={() => setCurrentTab('explore')}
+            className="text-xs font-bold text-pastel-purple-accent hover:underline"
           >
-            <RefreshCw className="w-4 h-4" />
+            View All
           </button>
         </div>
 
-        <p className="text-sm md:text-base font-bold text-slate-700 italic mt-2.5 leading-relaxed">
-          "{quote}"
-        </p>
-      </motion.section>
-
-      {/* Quick Access Control Centre Hub */}
-      <section className="space-y-3">
-        <div className="flex items-center justify-between px-1">
-          <h2 className="text-base md:text-lg font-black text-slate-800 font-display flex items-center gap-2">
-            <span>Control Centre Modules</span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-pastel-pink text-pastel-pink-deep font-bold">
-              6 Online
-            </span>
-          </h2>
-          <span className="text-xs text-slate-500 font-medium">Select a tool</span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-2.5">
           
-          {/* Module 1: Simulator */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={() => setCurrentTab('simulator')}
-            className="p-4 rounded-3xl bg-white border border-pastel-lavender/70 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-amber-100/80 text-amber-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                🧠
-              </div>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
-            </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-slate-800 font-display">
-                Overthinking Simulator
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                Turn a 2-second event into a 3-season Netflix drama.
-              </p>
-            </div>
-          </motion.button>
-
-          {/* Module 2: FBI Feelings Bureau */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={() => setCurrentTab('fbi')}
-            className="p-4 rounded-3xl bg-white border border-pastel-lavender/70 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-indigo-100/80 text-indigo-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                🕵️‍♀️
-              </div>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
-            </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-slate-800 font-display">
-                FBI Feelings Bureau
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                Full forensic investigation for suspicious punctuation.
-              </p>
-            </div>
-          </motion.button>
-
-          {/* Module 3: Great Oracle */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={() => setCurrentTab('oracle')}
-            className="p-4 rounded-3xl bg-white border border-pastel-lavender/70 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-purple-100/80 text-purple-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                🔮
-              </div>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
-            </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-slate-800 font-display">
-                The Great Oracle
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                Ask the universe. Get wholesome & funny predictions.
-              </p>
-            </div>
-          </motion.button>
-
-          {/* Module 4: Brain Diagnostics */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
+          {/* Sub-card 1: Brain.exe Diagnostics */}
+          <button
             onClick={() => setCurrentTab('diagnostics')}
-            className="p-4 rounded-3xl bg-white border border-pastel-lavender/70 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
+            className="p-3.5 rounded-2xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-slate-300 shadow-sm text-left transition-all active:scale-95 flex flex-col justify-between group"
           >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-sky-100/80 text-sky-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                💻
-              </div>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
+            <div className="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm border border-sky-100 mb-2">
+              <Cpu className="w-4 h-4" />
             </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-slate-800 font-display">
+            <div>
+              <h3 className="text-xs font-bold text-slate-800 line-clamp-1">
                 Brain.exe Diagnostics
               </h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                Check RAM usage & try to install Peace of Mind.
+              <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5">
+                Install peace of mind
               </p>
             </div>
-          </motion.button>
+          </button>
 
-          {/* Module 5: Emergency Button */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={openEmergency}
-            className="p-4 rounded-3xl bg-red-50/80 border border-red-200/80 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
+          {/* Sub-card 2: Open When You Need a Smile */}
+          <button
+            onClick={() => setCurrentTab('gift')}
+            className="p-3.5 rounded-2xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-slate-300 shadow-sm text-left transition-all active:scale-95 flex flex-col justify-between group"
           >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                🚨
-              </div>
-              <ArrowRight className="w-4 h-4 text-red-400 group-hover:translate-x-1 transition-transform" />
+            <div className="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-sm border border-pink-100 mb-2">
+              <Gift className="w-4 h-4" />
             </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-red-700 font-display">
-                Emergency Overthinking
+            <div>
+              <h3 className="text-xs font-bold text-slate-800 line-clamp-1">
+                Need a Smile?
               </h3>
-              <p className="text-xs text-red-600/80 mt-0.5 leading-relaxed">
-                Immediate 5-second countdown & calming protocol.
+              <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5">
+                Open surprise gift box
               </p>
             </div>
-          </motion.button>
+          </button>
 
-          {/* Module 6: Secret Letter */}
-          <motion.button
-            whileTap={{ scale: 0.97 }}
+          {/* Sub-card 3: Random Compliment Machine */}
+          <button
+            onClick={() => setCurrentTab('compliment')}
+            className="p-3.5 rounded-2xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-slate-300 shadow-sm text-left transition-all active:scale-95 flex flex-col justify-between group"
+          >
+            <div className="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm border border-rose-100 mb-2">
+              <Heart className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-slate-800 line-clamp-1">
+                Compliment Machine
+              </h3>
+              <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5">
+                Instant sweet words
+              </p>
+            </div>
+          </button>
+
+          {/* Sub-card 4: Secret Letter from Swaraj */}
+          <button
             onClick={() => setCurrentTab('letter')}
-            className="p-4 rounded-3xl bg-pastel-pink/40 border border-pastel-pink-deep/30 shadow-soft hover:shadow-soft-lg text-left transition-all flex flex-col justify-between group"
+            className="p-3.5 rounded-2xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-slate-300 shadow-sm text-left transition-all active:scale-95 flex flex-col justify-between group"
           >
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-2xl bg-white text-pink-500 flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-sm">
-                💌
-              </div>
-              <ArrowRight className="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform" />
+            <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm border border-purple-100 mb-2">
+              <Mail className="w-4 h-4" />
             </div>
-            <div className="mt-3">
-              <h3 className="text-sm font-extrabold text-slate-800 font-display">
-                Secret Note from Swaraj
+            <div>
+              <h3 className="text-xs font-bold text-slate-800 line-clamp-1">
+                Swaraj's Letter
               </h3>
-              <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                A warm personal reminder whenever you need it. ❤️
+              <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5">
+                Personal digital gift ❤️
               </p>
             </div>
-          </motion.button>
+          </button>
 
         </div>
       </section>

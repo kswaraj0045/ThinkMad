@@ -3,113 +3,111 @@
 > **"TOO MANY THOUGHTS. TOO LITTLE STORAGE."**  
 > *"Stop overthinking, you're Swaraj's friend! ❤️"*
 
-A cute, hilarious, polished, mobile-first personal website designed for **Rutuja** to bring a smile to her face whenever she starts overthinking. Created as a digital gift from **Swaraj**.
+A cute, hilarious, polished, mobile-first personal website designed for **Rutuja** to bring a smile to her face whenever she starts overthinking. Created with love by **Swaraj**.
 
 ---
 
-## ✨ Features
+## ✨ Clean Visual Architecture & Features
 
-1. **🏠 Home Dashboard**: 
-   - Welcome greeting: *"Welcome back, Rutuja! 💗"*
-   - Animated interactive Brain mascot that winks, blushes, and reacts to taps
-   - Real-time status cards: Brain Status (*TOO MANY TABS OPEN*), Current Mood (*DRAMATIC BUT CUTE*), Peace Level (*LOADING...*), System Status (*SURVIVING ✨*)
-   - Prominent **"FIX MY BRAIN 😂"** button for instant emergency panic handling
-   - Random funny motivational quote generator
+### 1. 🏠 Clean Home Dashboard
+- **Header:** *"Welcome back, Rutuja! 💗"* & *"Your brain has 47 tabs open. Let's close a few."*
+- **Main Section (3 Prominent Action Cards):**
+  1. **Overthinking Simulator 🧠**: Turn an innocent 2-second situation into an unnecessary 3-season Netflix drama.
+  2. **Mood of the Day 🌸**: Log your daily vibe (`Happy 😊`, `Sleepy 😴`, `Sad 🥺`, `Excited 🤩`, `Confused 😵‍💫`, `Dramatic 🎭`) with personalized humorous comfort advice and LocalStorage persistence.
+  3. **Emergency Overthinking Button 🚨**: Direct 5-second countdown panic defuser with calming breath guide.
+- **EXPLORE MORE ✨ Section (Clean, compact access to secondary features):**
+  - Brain.exe Diagnostics
+  - Open When You Need a Smile
+  - Random Compliment Machine
+  - Secret Letter from Swaraj
 
-2. **🧠 Overthinking Simulator**:
-   - Turn any innocent 2-second situation into a 3-season Netflix series with Bollywood drama levels
-   - Step-by-step brain escalation breakdown and energy wasted counter
-   - Button: **"OVERTHINK THIS 😂"** & **"GENERATE ANOTHER RESULT"**
+### 2. 🧠 Overthinking Simulator
+- Input custom situation or tap preset triggers (*"He replied with 'K' instead of 'Okay'"*, etc.).
+- Animated generation: Netflix series synopsis, drama level, overthought trajectory, and brain energy wasted meter.
+- Buttons: **`OVERTHINK THIS 😂`** & **`GENERATE ANOTHER RESULT`**.
 
-3. **🕵️‍♀️ FBI Feelings Bureau of Investigation**:
-   - Case report generator with official dossiers, case IDs, suspicion percentage, and primary suspect: *"Rutuja's Overactive Imagination"*
-   - Official verdicts: *"Insufficient evidence. Stop creating imaginary problems."*
-   - Button: **"START INVESTIGATION 🔍"**
+### 3. 🌸 Mood of the Day
+- Minimal emoji selector: `Happy 😊`, `Sleepy 😴`, `Sad 🥺`, `Excited 🤩`, `Confused 😵‍💫`, `Dramatic 🎭`.
+- Personalized funny or comforting advice & prescription for each mood.
+- Persists across refreshes using LocalStorage.
 
-4. **💻 Brain.exe System Diagnostics**:
-   - Live system scans: Brain RAM 99.8%, Overthinking CPU 100%, Unnecessary Scenarios 847
-   - Interactive **"INSTALL PEACE OF MIND"** button with animated progress bar
-   - Final surprise: *"Installation complete! Unfortunately, overthinking cannot be uninstalled. 😂"*
+### 4. 🎁 Open When You Need a Smile
+- 3D interactive virtual gift box with ribbon.
+- Unwrapping animation + heart confetti celebration.
+- Over 20+ sweet, witty, and uplifting personal care messages.
+- Button: **`Open Another Surprise 🎁`**.
 
-5. **🔮 The Great Rutuja Oracle**:
-   - Mystical glowing 3D crystal ball with cosmic dust and floating stars
-   - Type any question into the universe
-   - Over 22+ hilarious, wholesome offline predictions with cosmic signs and lucky snacks
-   - Button: **"REVEAL MY FUTURE 🔮"** & **"REVEAL ANOTHER PREDICTION"**
+### 5. 💗 Random Compliment Machine
+- One prominent button: **`GIVE ME A COMPLIMENT 💗`**.
+- Dispenses over 20+ genuine, affectionate, and funny compliments tailored for Rutuja.
 
-6. **🚨 Emergency Overthinking Button**:
-   - Dramatic countdown from 5 to 1 with pulsing visual siren
-   - Playful calming messages: *"STOP. Not every thought deserves a meeting."*
-   - Interactive breath bubble guide
-   - Announcement: **"EMERGENCY SUCCESSFULLY HANDLED 💗"**
+### 6. 💻 Brain.exe System Diagnostics
+- Interactive hardware monitor: Brain RAM 99.8%, Overthinking CPU 100%, Unnecessary Scenarios 847.
+- **`INSTALL PEACE OF MIND`** button with progress bar and humorous punchline:
+  > *"Installation complete! Unfortunately, overthinking cannot be uninstalled. 😂"*
 
-7. **💌 Secret Letter from Swaraj**:
-   - 3D interactive wax-sealed envelope that opens with celebration confetti
-   - Exact personal message: **"Stop overthinking, you're Swaraj's friend! ❤️"**
-   - Warm words of comfort and signature: *"With lots of love, Swaraj ❤️"*
+### 7. 🚨 Emergency Overthinking Button
+- Giant panic button with animated 5-to-1 countdown.
+- Reassuring calming messages (*"STOP. Not every thought deserves a meeting."*, *"Relax, Rutuja. One thing at a time."*).
+- Interactive breath bubble guide (Inhale, Hold, Exhale, Rest).
+- Final state: **`EMERGENCY SUCCESSFULLY HANDLED 💗`**.
 
-8. **🎉 Extra Fun Features**:
-   - **Drama Meter**: Interactive 0-100 slider with dynamic Bollywood/Oscar-winning commentary
-   - **Five-Minute Peace Timer**: Simple countdown timer for relaxing without checking notifications
-   - **Random Funny Quotes**: 25+ humorous overthinking truths
-   - **Achievement Badges**: Stored persistently in LocalStorage (First Overthinker, FBI Detective, Oracle Believer, Emergency Survivor, Zen Master, etc.)
-   - **Web Audio Synthesizer**: Cute offline sound effects (pops, chimes, sirens) with mute toggle
-   - **PWA & Offline Support**: Installable on iOS/Android home screens
+### 8. 💌 Secret Letter from Swaraj
+- 3D interactive wax-sealed envelope that opens with celebration confetti.
+- **Exact Personal Message:**
+  > ### *"Stop overthinking, you're Swaraj's friend! ❤️"*
+- Warm comforting words and signature: *"With lots of love, Swaraj ❤️"*.
+
+### 9. 🧰 Mental Wellness Toolbox (Inside Explore)
+- **Drama Meter:** Interactive 0–100 slider with changing Bollywood & Oscar commentary.
+- **Five-Minute Peace Timer:** 5-minute (300s) countdown timer with Start, Pause, and Reset.
+- **Funny Quote Generator:** 25+ witty truths about overthinking.
+- **Achievement Badges:** 8+ playful badges saved persistently in LocalStorage.
+
+---
+
+## 📱 Simplified Mobile Navigation
+
+- **Home 🏠:** Clean welcome view with 3 primary cards + Explore quick-links.
+- **Simulator 🧠:** Direct access to overthinking scenarios.
+- **Mood 🌸:** Daily mood check-in & advice.
+- **Explore ✨:** Hub for Gift Box, Compliment Machine, Brain Diagnostics, Swaraj's Letter, and Wellness Toolbox.
 
 ---
 
 ## 🛠️ Technology Stack
 
 - **React 18** + **TypeScript**
-- **Vite** for ultra-fast builds
-- **Tailwind CSS** with a custom pastel aesthetic (Lavender, Baby Pink, Cream, Purple)
-- **Framer Motion** for smooth, playful micro-interactions
-- **Lucide React** for clean modern iconography
-- **Canvas Confetti** for heart & sparkle celebrations
+- **Vite**
+- **Tailwind CSS** (Soft lavender, baby pink, white, light cream)
+- **Framer Motion** for smooth, lightweight transitions
+- **Lucide React** for clean icons
+- **Canvas Confetti** for celebration micro-interactions
 - **Web Audio API** for zero-dependency sound effects
-- **LocalStorage** for saving user badges and preferences
-- **Service Worker & Web Manifest** for Progressive Web App (PWA) offline support
+- **LocalStorage** for saving user mood, badges, and drama level
+- **PWA & Offline Service Worker**
 
 ---
 
 ## 🚀 Running Locally
 
-1. Install dependencies:
-   ```bash
-   pnpm install
-   # or npm install
-   ```
+```bash
+# Start development server
+npm run dev
+# or: pnpm run dev
+```
 
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Open `http://localhost:3000` in your smartphone or browser.
+Server runs at `http://localhost:3000/`.
 
 ---
 
-## 📦 Production Build
+## 📦 Production Build & Deploy
 
 ```bash
 npm run build
 ```
 
-The compiled output will be generated inside the `dist/` directory, ready to serve or deploy.
-
----
-
-## 🌐 Deploying to Vercel
-
-1. Push this repository to GitHub.
-2. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
-3. Import this repository.
-4. Framework Preset: **Vite**.
-5. Build Command: `npm run build`
-6. Output Directory: `dist`
-7. Click **Deploy**!
-
-No environment variables or backend servers are required. Everything runs 100% client-side.
+The output in `dist/` is ready for Vercel deployment without any backend or environment variables.
 
 ---
 

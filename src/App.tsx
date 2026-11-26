@@ -11,12 +11,13 @@ import { EmergencyModal } from './components/features/EmergencyModal';
 // Feature Views
 import { HomeDashboard } from './components/features/HomeDashboard';
 import { OverthinkingSimulator } from './components/features/OverthinkingSimulator';
-import { FBIBureau } from './components/features/FBIBureau';
-import { RutujaOracle } from './components/features/RutujaOracle';
+import { MoodOfTheDay } from './components/features/MoodOfTheDay';
+import { ExploreHub } from './components/features/ExploreHub';
 import { BrainDiagnostics } from './components/features/BrainDiagnostics';
 import { EmergencyView } from './components/features/EmergencyView';
 import { SecretLetter } from './components/features/SecretLetter';
-import { ExtrasHub } from './components/features/ExtrasHub';
+import { SmileGiftBox } from './components/features/SmileGiftBox';
+import { ComplimentMachine } from './components/features/ComplimentMachine';
 
 export const AppContent: React.FC = () => {
   const { currentTab } = useApp();
@@ -27,18 +28,20 @@ export const AppContent: React.FC = () => {
         return <HomeDashboard />;
       case 'simulator':
         return <OverthinkingSimulator />;
-      case 'fbi':
-        return <FBIBureau />;
-      case 'oracle':
-        return <RutujaOracle />;
+      case 'mood':
+        return <MoodOfTheDay />;
+      case 'explore':
+        return <ExploreHub />;
       case 'diagnostics':
         return <BrainDiagnostics />;
       case 'emergency':
         return <EmergencyView isModal={false} />;
       case 'letter':
         return <SecretLetter />;
-      case 'extras':
-        return <ExtrasHub />;
+      case 'gift':
+        return <SmileGiftBox />;
+      case 'compliment':
+        return <ComplimentMachine />;
       default:
         return <HomeDashboard />;
     }
@@ -47,11 +50,10 @@ export const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col relative overflow-x-hidden">
       
-      {/* Floating background decorative ambient elements */}
+      {/* Floating background decorative ambient elements (subtle, non-distracting) */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-pastel-pink/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 right-5 w-80 h-80 bg-pastel-lavender/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-pastel-peach/30 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-pastel-pink/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 right-5 w-80 h-80 bg-pastel-lavender/30 rounded-full blur-3xl" />
       </div>
 
       {/* Header bar */}
@@ -61,14 +63,14 @@ export const AppContent: React.FC = () => {
       <DesktopNav />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-4 md:py-6 relative z-10 mobile-nav-spacer">
+      <main className="flex-1 w-full max-w-3xl mx-auto px-4 py-4 md:py-6 relative z-10 mobile-nav-spacer">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: 'easeOut' }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
           >
             {renderActiveTab()}
           </motion.div>

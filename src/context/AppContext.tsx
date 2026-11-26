@@ -25,7 +25,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const RANDOM_IDLE_TOASTS = [
-  { title: "FBI Notice 🕵️‍♀️", message: "Rutuja did something suspicious. 😂", type: "funny" as const },
+  { title: "Care Package 🎁", message: "A virtual smile is ready for you in Explore!", type: "love" as const },
   { title: "Brain Status ☕", message: "Your brain requested a coffee break.", type: "info" as const },
   { title: "System Tip 🕊️", message: "Peace mode activated in background.", type: "success" as const },
   { title: "Swaraj's Reminder ❤️", message: "Stop overthinking, you're Swaraj's friend!", type: "love" as const },

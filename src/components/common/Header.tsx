@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
 
           {/* Achievements badge button */}
           <button
-            onClick={() => setCurrentTab('extras')}
+            onClick={() => setCurrentTab('explore')}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-pastel-lavender/60 hover:bg-pastel-lavender border border-pastel-purple/30 text-xs font-bold text-pastel-purple-accent transition-all active:scale-95"
             title="View Badges & Achievements"
           >
